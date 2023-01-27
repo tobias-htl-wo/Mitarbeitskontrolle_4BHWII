@@ -9,7 +9,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Input.GetAxis("Horizontal") + " | " + Input.GetAxis("Vertical"));
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            movement_speed = 10f;
+        }
+        else
+        {
+            movement_speed = 5f;
+        }
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * movement_speed * Time.deltaTime;
         if (movement != Vector3.zero)
         {

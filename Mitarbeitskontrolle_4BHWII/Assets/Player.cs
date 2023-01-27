@@ -11,13 +11,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            movement_speed = 10f;
+            movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * movement_speed * Time.deltaTime * 2;
         }
         else
         {
-            movement_speed = 5f;
+            movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * movement_speed * Time.deltaTime;
         }
-        movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * movement_speed * Time.deltaTime;
         if (movement != Vector3.zero)
         {
             transform.position += movement;
